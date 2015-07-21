@@ -2283,21 +2283,23 @@ MinimapMapScaleX = location.minimap.w / MapWidth
 MinimapMapScaleY = location.minimap.h / MapHeight
 
 function Close()
+  collectgarbage("collect")
   if registered then
-    advancedM = {}
-    cours = {}
-    declarePurchase = {}
-    effects = {}
-    hpMon = {}
-    items = {}
-    manaBar = {}
-    missingObjs = {}
-    roshObjs = {}
-    runeObjs = {}
-    scoreboard = {}
+    CreepMasterTick(nplaying)
+    EffectTick(nplaying)
+    RuneTick(nplaying)
+    RoshanTick(nplaying)
+    MissingTick(nplaying)
+    HpTick(nplaying)
+    ManaBarTick(nplaying)
+    CollectData(nplaying)
+    AdvancedTick(nplaying)
+    ScoreBoardTick(nplaying)
+    GlyphTick(nplaying)
+    ItemTick(nplaying)
+    RoshanRespawnTick(nplaying)
     registered = false
   end
-  collectgarbage("collect")
 end
 
 script:RegisterEvent(EVENT_CLOSE,Close)
